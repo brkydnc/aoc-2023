@@ -1,6 +1,8 @@
 CC=clang++
 FLAGS=-std=c++20 -Wall -O3
-SESSION=$(file < SESSION)
+
+# $(file < SESSION) is not supported in macOS (make v3.81)
+SESSION=$(shell cat SESSION)
 
 all:
 	$(CC) $(FLAGS) day/$(DAY)/$(PART)/*.cpp -o day/$(DAY)/$(PART)/main
